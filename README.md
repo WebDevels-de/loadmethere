@@ -1,2 +1,4 @@
-# loadmethere
-Ajax load function which will help you to load any URL in any target container (HTML) on click on a speific element.
+# loadMeThere()
+Ajax toolset - something that should be built in!
+
+Read docs/index.html (you might need to open it over a web server or localhost).
