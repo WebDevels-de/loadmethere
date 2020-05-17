@@ -39,10 +39,10 @@
  * @param {bool} scrollToTarget should the browser scroll to the target id (default: false)
  * @param {mixed} disableCustomElement disable element(s) by id/class while loading: string(id/class inlcuding "#" or ".") // bool: false to disable this function; no effect on true (default: false)
  * @param {bool} disableAnyLMT disable all loadMeThere buttons, links, ... while loading: true=disable buttons; false=leave enabled (default: false)
- * @param {int} animationTime how long should the animation take? (default: 350)
+ * @param {int} animationTime how long should the animation take? (default: 600)
  * @param {int} scrollToTargetOffset negative distance on scrollToTarget in pixel (default: 0)
  */
-function loadMeThere(requestURL, targetContainer, position, scrollToTarget, disableCustomElement, disableAnyLMT, animationTime=350, scrollToTargetOffset=0) {
+function loadMeThere(requestURL, targetContainer, position, scrollToTarget, disableCustomElement, disableAnyLMT, animationTime=600, scrollToTargetOffset=0) {
     // set possible positions
     var availablePositions = ['before', 'prepend', 'in', 'append', 'after', 'as'];
 
@@ -69,10 +69,10 @@ function loadMeThere(requestURL, targetContainer, position, scrollToTarget, disa
     if(disableCustomElement == undefined) {
         disableCustomElement = false;
     }
-    if(animationTime == undefined) {
-        animationTime = 350;
+    if(animationTime == undefined || Number.isInteger(animationTime) == false) {
+        animationTime = 600;
     }
-    if(scrollToTargetOffset == undefined) {
+    if(scrollToTargetOffset == undefined || Number.isInteger(scrollToTargetOffset) == false) {
         scrollToTargetOffset = 0;
     }
 
@@ -211,15 +211,15 @@ function loadMeThere(requestURL, targetContainer, position, scrollToTarget, disa
  * finally show the target container again (slideDown).
  *
  * @param {string} targetContainer the target id where the content should be deleted [required]
- * @param {int} animationTime how long should the animation take? (default: 350)
+ * @param {int} animationTime how long should the animation take? (default: 600)
  */
-function emptyTarget(targetContainer, animationTime=350) {
+function emptyTarget(targetContainer, animationTime=600) {
     if(targetContainer == undefined) {
         console.error("Missing: targetContainer");
         return false;
     }
     if(animationTime == undefined) {
-        animationTime = 350;
+        animationTime = 600;
     }
 
     $("#"+targetContainer).slideUp(animationTime, function() {
@@ -234,15 +234,15 @@ function emptyTarget(targetContainer, animationTime=350) {
  * Animates the target container (slideUp) then removes it.
  *
  * @param {string} target the target id of the element to be deleted [required]
- * @param {int} animationTime how long should the animation take? (default: 350)
+ * @param {int} animationTime how long should the animation take? (default: 600)
  */
-function deleteTarget(targetContainer, animationTime = 350) {
+function deleteTarget(targetContainer, animationTime = 600) {
     if(targetContainer == undefined) {
         console.error("Missing: targetContainer");
         return false;
     }
     if(animationTime == undefined) {
-        animationTime = 350;
+        animationTime = 600;
     }
 
     $("#"+targetContainer).slideUp(animationTime, function() {
@@ -299,7 +299,7 @@ $(function() {
             }
         }
         if(disableAnyLMT == undefined) {
-            disableAnyLMT = true;
+            disableAnyLMT = false;
         } else {
             if(disableAnyLMT == 'true') {
                 // convert from string to bool
@@ -311,11 +311,11 @@ $(function() {
         if(disableCustomElement == undefined) {
             disableCustomElement = false;
         }
-        if(animationTime == undefined) {
-            animationTime = 350;
+        if(animationTime == undefined || Number.isInteger(animationTime) == false) {
+            animationTime = 600;
         }
         if(scrollToTargetOffset == undefined) {
-            scrollToTargetOffset = 50;
+            scrollToTargetOffset = 0;
         }
 
         if(htmlURL != false && dataURL == false) {              // only href is given: push
@@ -343,7 +343,7 @@ $(function() {
             return false;
         }
         if(animationTime == undefined) {
-            animationTime = 350;
+            animationTime = 600;
         }
 
         emptyTarget(target, animationTime);
@@ -360,7 +360,7 @@ $(function() {
             return false;
         }
         if(animationTime == undefined) {
-            animationTime = 350;
+            animationTime = 600;
         }
 
         deleteTarget(target, animationTime);
