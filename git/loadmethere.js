@@ -44,7 +44,7 @@
  */
 function loadMeThere(requestURL, targetContainer, position, scrollToTarget, disableCustomElement, disableAnyLMT, animationTime=600, scrollToTargetOffset=0) {
     // set possible positions
-    var availablePositions = ['before', 'prepend', 'in', 'append', 'after', 'as'];
+    var availablePositions = ['before', 'prepend', 'in', 'append', 'after', 'as', 'modal'];
 
     /**
      * first check if delivered params are ok or we need to exit
@@ -64,7 +64,7 @@ function loadMeThere(requestURL, targetContainer, position, scrollToTarget, disa
         scrollToTarget = false;
     }
     if(disableAnyLMT == undefined) {
-        disableAnyLMT = false;
+        disableAnyLMT = true;
     }
     if(disableCustomElement == undefined) {
         disableCustomElement = false;
@@ -172,9 +172,11 @@ function loadMeThere(requestURL, targetContainer, position, scrollToTarget, disa
                     }
                 });
 
+            } else if(position == "modal") {
+                $("#"+targetContainer).html(jqxhr.responseText);
             }
         } else {
-            console.log("Unable to find target with ID: "+targetContainer);
+            console.error("Unable to find target with ID: "+targetContainer);
             return false;
         }
     })
@@ -278,11 +280,11 @@ $(function() {
             dataURL = false;
         }
         if(htmlURL == false && dataURL == false) {
-            console.log("LMT: missing URL in href and/or data-href");
+            console.error("LMT: missing URL in href and/or data-href");
             return false;
         }
         if(target == undefined) {
-            console.log("LMT: missing target");
+            console.error("LMT: missing target");
             return false;
         }
         if(position == undefined) {
@@ -327,7 +329,7 @@ $(function() {
             history.pushState({}, "", htmlURL);
             loadMeThere(dataURL, target, position, scrollToTarget, disableCustomElement, disableAnyLMT, animationTime, scrollToTargetOffset);
         } else {
-            console.log("LMT: something went wrong...");
+            console.error("LMT: something went wrong...");
             return false;
         }
 
@@ -339,7 +341,7 @@ $(function() {
         var animationTime       = $(this).attr("data-animation-time");  // time in ms for slide up/down animation
 
         if(target == undefined) {
-            console.log("LMT: missing target");
+            console.error("LMT: missing target");
             return false;
         }
         if(animationTime == undefined) {
@@ -356,7 +358,7 @@ $(function() {
         var animationTime       = $(this).attr("data-animation-time");  // time in ms for slide up/down animation
 
         if(target == undefined) {
-            console.log("LMT: missing target");
+            console.error("LMT: missing target");
             return false;
         }
         if(animationTime == undefined) {

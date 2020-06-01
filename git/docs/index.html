@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<html style="padding-bottom: 80px;">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <title>loadMeThere()</title>
+    <meta name="description" content="Ajax toolset - something that should be built in!">
+    <link rel="icon" type="image/png" sizes="16x16" href="assets/img/favicon16.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="assets/img/favicon32.png">
+    <link rel="icon" type="image/png" sizes="180x180" href="assets/img/favicon180.png">
+    <link rel="icon" type="image/png" sizes="192x192" href="assets/img/favicon192.png">
+    <link rel="icon" type="image/png" sizes="512x512" href="assets/img/favicon512.png">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootswatch/4.5.0/sandstone/bootstrap.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:400,500,700&amp;display=swap">
+</head>
+
+<body style="margin-top: 32px;">
+    <main></main>
+    <div class="container">
+        <div class="jumbotron text-white bg-primary" style="padding: 64px 32px 32px 32px;">
+            <h1>loadMeThere()</h1>
+            <p>Ajax toolset - something that should be built in!</p><a class="btn btn-secondary btn-sm" role="button" href="https://github.com/WebDevels-de/loadmethere" target="_blank">GitHub</a></div>
+        <div class="card" style="margin-bottom: 32px;">
+            <div class="card-header">
+                <h5 class="mb-0">What is it doing?<br></h5>
+            </div>
+            <div class="card-body">
+                <p class="card-text">In simple words: it loads a requested URL with Ajax and puts the loaded content (answer) into a target.<br></p>
+                <p class="card-text">As a very basic example: you have a DIV container like this one:<br><code>&lt;div id="mySpecialDIV"&gt;Some predefined content in my special DIV&lt;/div&gt;<br></code><br>And you have a basic link like that:<br><code>&lt;a href="https://mydomain.com/some/file.php?foo=bar"&gt;My Link&lt;/a&gt;<br></code></p>
+                <p
+                    class="card-text">Only with adding some parameters to the link above, we are able to load the href-URL into the DIV with the ID mySpecialDIV. <br>In fact we can say a bit more than that :)<br>The cool part of loadMeThere is that is not only a function that
+                    you might use in a JS script, it's real potential comes with the listeners that will trigger the magic of Ajax. With the listeners we can say that any element that has a class "loadmethere" can be used to trigger the loadMeThere()
+                    function and get content from a URL.</p>
+            </div>
+        </div>
+        <div role="tablist" id="accordion-1" style="margin-bottom: 32px;">
+            <div class="card">
+                <div class="card-header" role="tab" data-toggle="collapse" aria-expanded="false" aria-controls="accordion-1 .item-1" href="#accordion-1 .item-1" style="cursor: pointer;">
+                    <h5 class="mb-0"><a data-toggle="collapse" aria-expanded="false" aria-controls="accordion-1 .item-1" href="#accordion-1 .item-1"><strong>Documentation: JS Part</strong></a></h5>
+                </div>
+                <div class="collapse item-1" role="tabpanel" data-parent="#accordion-1">
+                    <div class="card-body">
+                        <div class="card bg-light border-info" style="margin-bottom: 32px;">
+                            <div class="card-header text-light bg-info">
+                                <h5 class="mb-0">JS: How to (minimum)<br></h5>
+                            </div>
+                            <div class="card-body">
+                                <p class="card-text">I won't go to deep in this part. If you're developing in JS, the following infos with the "HTML: How to"-knowledge will be enough. If not: tell me what you're missing.</p>
+                                <ul>
+                                    <li>Be sure to use (preloaded) jQuery in your project.<br></li>
+                                    <li>Of course you will need to include loadmethere.js in your project too!<br></li>
+                                    <li>When ever you fire the function loadMeThere() it will load the URL into the target:<br><code>loadMeThere(requestURL,&nbsp;targetContainer,&nbsp;position,&nbsp;scrollToTarget,&nbsp;disableCustomElement,&nbsp;disableAnyLMT,&nbsp;animationTime,&nbsp;scrollToTargetOffset);<br></code></li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="card border-secondary" style="margin-bottom: 32px;">
+                            <div class="card-header text-light bg-secondary">
+                                <h5 class="mb-0">Parameters &amp; Options<br></h5>
+                            </div>
+                            <div class="card-body">
+                                <div class="table-responsive">
+                                    <table class="table table-striped table-hover table-sm">
+                                        <thead>
+                                            <tr>
+                                                <th>Tag</th>
+                                                <th>Type</th>
+                                                <th>Description</th>
+                                                <th>Options</th>
+                                                <th>Default</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td>targetURL</td>
+                                                <td>string</td>
+                                                <td>This URL will be loaded with Ajax.</td>
+                                                <td class="text-nowrap">valid URL</td>
+                                                <td>none</td>
+                                            </tr>
+                                            <tr>
+                                                <td class="text-nowrap">targetContainer</td>
+                                                <td class="text-nowrap">string</td>
+                                                <td>The ID of the element where it should be loaded.</td>
+                                                <td>valid ID</td>
+                                                <td>none</td>
+                                            </tr>
+                                            <tr>
+                                                <td>position</td>
+                                                <td>string</td>
+                                                <td>Related to the targetContainer, where should the new content appear?</td>
+                                                <td>before, prepend, in, append, after, as</td>
+                                                <td>in</td>
+                                            </tr>
+                                            <tr>
+                                                <td>scrollToTarget</td>
+                                                <td>bool</td>
+                                                <td>Should the browsers viewport scroll to the targetContainer after loading?</td>
+                                                <td>true/false</td>
+                                                <td>false</td>
+                                            </tr>
+                                            <tr>
+                                                <td>disableCustomElement</td>
+                                                <td>mixed</td>
+                                                <td>bool: false = nothing happens&nbsp;<br>bool: true (treated like false)<br>string: id or class = elements won't be accessable while loading</td>
+                                                <td>false/string<br>"#myID" or "a.btn"</td>
+                                                <td>false</td>
+                                            </tr>
+                                            <tr>
+                                                <td>disableAnyLMT</td>
+                                                <td>bool</td>
+                                                <td>On true all loadMeThere elements (buttons, links, ...) on page won't be accessable while loading.</td>
+                                                <td>true/false</td>
+                                                <td>false</td>
+                                            </tr>
+                                            <tr>
+                                                <td>animationTime</td>
+                                                <td>int</td>
+                                                <td>Animation time for slideUp and slideDown events (in ms).</td>
+                                                <td>650</td>
+                                                <td>350</td>
+                                            </tr>
+                                            <tr>
+                                                <td>scrollToTargetOffset</td>
+                                                <td>int</td>
+                                                <td>If scrollToTarget=true, you can set a offset in pixel for the browser (in px).</td>
+                                                <td>150</td>
+                                                <td>0</td>
+                                            </tr>
+                                            <tr></tr>
+                                            <tr></tr>
+                                            <tr></tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-header" role="tab" data-toggle="collapse" aria-expanded="false" aria-controls="accordion-1 .item-2" href="#accordion-1 .item-2" style="cursor: pointer;">
+                    <h5 class="mb-0"><a data-toggle="collapse" aria-expanded="true" aria-controls="accordion-1 .item-2" href="#accordion-1 .item-2"><strong>Dosumentation:&nbsp;HTML Part (Listeners)</strong></a></h5>
+                </div>
+                <div class="collapse show item-2" role="tabpanel" data-parent="#accordion-1">
+                    <div class="card-body">
+                        <div class="card bg-light border-info" style="margin-bottom: 32px;">
+                            <div class="card-header text-light bg-info">
+                                <h5 class="mb-0">HTML:&nbsp;How to (minimum)<br></h5>
+                            </div>
+                            <div class="card-body">
+                                <ul>
+                                    <li>Be sure to add jQuery first! CDN example:<br><code>&lt;script&nbsp;src="https://code.jquery.com/jquery-3.5.1.slim.min.js"&nbsp;integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"&nbsp;crossorigin="anonymous"&gt;&lt;/script&gt;<br></code><br></li>
+                                    <li>First you need to include loadmethere.js or loadmethere.min.js in your HTML (can be in the footer):<br><code>&lt;script src="path/to/loadmethere.min.js"&gt;&lt;/script&gt;<br></code><br></li>
+                                    <li>Next we need the target. Where should the requestet URLs anser appear? This can be any element as long as it has a id tag (id="").<br><code>&lt;div id="mySpecialDIV"&gt;<br>&nbsp; this container can already be filled or be empty<br>&lt;/div&gt;<br></code><br></li>
+                                    <li>Magic comes now: The element that triggers the Ajax call. <br>This can also be any element as long as it has the class "loadmethere" and some data-tags set. To keep it simple and a bit better to understand we're using
+                                        a basic link:<br><code>&lt;a href="https://mydomain.com/file.php" class="loadmethere" data-target="mySpecialDIV" data-position="in"&gt;My Link&lt;/a&gt;<br></code></li>
+                                    <li>That's all! If you click on the link now, the URL should be loaded and printed in the above DIV container.</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="card text-body bg-warning" style="margin-bottom: 32px;">
+                            <div class="card-header">
+                                <h5 class="mb-0">Browser URL History<br></h5>
+                            </div>
+                            <div class="card-body">
+                                <p>loadMeThere comes with a simple but effective way to handle the browsers URL history! The trick is the use of the default href tag and a custom data-href tag. Depending on which of them you use in your loadMeThere link,
+                                    The history will be pushed or not. You can choose between three ways:</p>
+                                <ol>
+                                    <li><strong>href </strong>and <strong>data-href</strong><br>This will load the <strong>data-href</strong> URL with Ajax and push <strong>href </strong>to browser URL history.<br><br></li>
+                                    <li><strong>href </strong>only<br>This will load the&nbsp;<strong>href</strong>&nbsp;URL with Ajax and also push&nbsp;<strong>href&nbsp;</strong>to browser URL history.<br><br></li>
+                                    <li><strong>data-href </strong>only<br>This will load the&nbsp;<strong>data-href</strong>&nbsp;URL with Ajax and push wont push anything.<br></li>
+                                </ol>
+                            </div>
+                        </div>
+                        <div class="card border-secondary" style="margin-bottom: 32px;">
+                            <div class="card-header text-light bg-secondary">
+                                <h5 class="mb-0">Parameters &amp; Options<br></h5>
+                            </div>
+                            <div class="card-body">
+                                <p>A loadMeThere element can have some parameters if you need them. Minimum are always the class="loadmethere" and a valid href or data-href tag.</p>
+                                <div class="table-responsive">
+                                    <table class="table table-striped table-hover table-sm">
+                                        <thead>
+                                            <tr>
+                                                <th>Tag</th>
+                                                <th>Description</th>
+                                                <th>Options</th>
+                                                <th>Default</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td>href</td>
+                                                <td>Eather the URL that will be loaded or the pushed browser history URL (or nothing).</td>
+                                                <td class="text-nowrap">valid URL</td>
+                                                <td>none</td>
+                                            </tr>
+                                            <tr>
+                                                <td>data-href</td>
+                                                <td>If provided the URL that will be loaded with Ajax.</td>
+                                                <td class="text-nowrap">valid URL</td>
+                                                <td>none</td>
+                                            </tr>
+                                            <tr>
+                                                <td class="text-nowrap">data-target</td>
+                                                <td>The ID of the element where it should be loaded.</td>
+                                                <td>valid ID</td>
+                                                <td>none</td>
+                                            </tr>
+                                            <tr>
+                                                <td>position</td>
+                                                <td>Related to the targetContainer, where should the new content appear?</td>
+                                                <td>"before", "prepend", "in", "append", "after", "as"</td>
+                                                <td>"in"</td>
+                                            </tr>
+                                            <tr>
+                                                <td>data-scrollto-target<br></td>
+                                                <td>Should the browsers viewport scroll to the targetContainer after loading?</td>
+                                                <td>"true" or "false"</td>
+                                                <td>"false"</td>
+                                            </tr>
+                                            <tr>
+                                                <td class="text-nowrap">data-disable-element<br></td>
+                                                <td>"false" = nothing happens&nbsp;<br>valid id or class = elements won't be accessable while loading</td>
+                                                <td>"false",<br>"#myID" or "a.btn"</td>
+                                                <td>"false"</td>
+                                            </tr>
+                                            <tr>
+                                                <td>data-disable-lmt<br></td>
+                                                <td>On true all loadMeThere elements (buttons, links, ...) on page won't be accessable while loading.</td>
+                                                <td>"true" or "false"<br></td>
+                                                <td>"false"</td>
+                                            </tr>
+                                            <tr>
+                                                <td>data-animation-time<br></td>
+                                                <td>Animation time for slideUp and slideDown events (in ms).</td>
+                                                <td>"650"</td>
+                                                <td>"350"</td>
+                                            </tr>
+                                            <tr>
+                                                <td>data-scrollto-offset<br></td>
+                                                <td>If&nbsp;data-scrollto-target="true", you can set a offset in pixel for the browser.</td>
+                                                <td>"150"</td>
+                                                <td>"0"</td>
+                                            </tr>
+                                            <tr></tr>
+                                            <tr></tr>
+                                            <tr></tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card" style="margin-bottom: 32px;">
+                            <div class="card-header text-light bg-primary">
+                                <h5 class="mb-0">Examples<br></h5>
+                            </div>
+                            <div class="card-body">
+                                <p>Every example has the following versions / differences:</p>
+                                <ol>
+                                    <li><strong>HREF&nbsp;ONLY</strong><br>On click it will load the file at the desired location and push the same URL to browsers hiostory. Check your URL bar (card-xx.html). If you refresh the site you will load the Ajax
+                                        file only if your code won't catch this in any way.</li>
+                                    <li><strong>DATA-HREF ONLY</strong><br>On click it loads the URL given in data-href with Ajax - no URL push to browser. On a refresh you will load this page again, because nothing has changed for the browser. Usefull if
+                                        you want to trigger something but don't want to load it again on a page refresh.</li>
+                                    <li><strong>HREF &amp;&nbsp;DATA-HREF</strong><br>This will load data-href URL with Ajax but push the href URL into browsers top bar.<br>On page refresh the pushed href URL will be reloaded. You can use this if you want
+                                        to pass a GET var to the URL (maybe a filename). Later in your code you can check if the GET var is set and maybe load the file again or what ever.</li>
+                                </ol>
+                                <div class="row" id="disable-example">
+                                    <div class="col-2 text-center">
+                                        <h4 style="margin: 0px;">BEFORE</h4><a href="card-before.html" target="_blank">card-before.html</a><a class="btn btn-outline-info btn-block btn-sm loadmethere" role="button" href="card-before.html" data-target="mySpecialDIV" data-position="before"
+                                            style="margin-top: 4px;">HREF only</a><a class="btn btn-outline-info btn-block btn-sm loadmethere" role="button" data-href="card-before.html" data-target="mySpecialDIV" data-position="before" href="#">DATA-HREF only</a>
+                                        <a
+                                            class="btn btn-info btn-block btn-sm loadmethere" role="button" href="index.html?myfile=card-before" data-href="card-before.html" data-target="mySpecialDIV" data-position="before">HREF &amp; DATA-HREF</a>
+                                            <hr>
+                                            <h4 style="margin: 0px;">PREPEND</h4><a href="card-prepend.html" target="_blank">card-prepend.html</a><a class="btn btn-outline-warning btn-block btn-sm loadmethere" role="button" href="card-prepend.html" data-target="mySpecialDIV"
+                                                data-position="prepend" style="margin-top: 4px;">HREF only</a><a class="btn btn-outline-warning btn-block btn-sm loadmethere" role="button" data-href="card-prepend.html" data-target="mySpecialDIV" data-position="prepend"
+                                                href="#">DATA-HREF only</a><a class="btn btn-warning btn-block btn-sm loadmethere" role="button" href="index.html?myfile=card-prepend" data-href="card-prepend.html" data-target="mySpecialDIV" data-position="prepend">HREF &amp; DATA-HREF</a>
+                                            <hr>
+                                            <h4 style="margin: 0px;">IN</h4><a href="card-in.html" target="_blank">card-in.html</a><a class="btn btn-outline-success btn-block btn-sm loadmethere" role="button" href="card-in.html" data-target="mySpecialDIV" data-position="in" style="margin-top: 4px;">HREF only</a>
+                                            <a
+                                                class="btn btn-outline-success btn-block btn-sm loadmethere" role="button" data-href="card-in.html" data-target="mySpecialDIV" data-position="in" href="#">DATA-HREF only</a><a class="btn btn-success btn-block btn-sm loadmethere" role="button" href="index.html?myfile=card-in" data-href="card-in.html" data-target="mySpecialDIV" data-position="in">HREF &amp; DATA-HREF</a>
+                                                <hr>
+                                                <h4 style="margin: 0px;">APPEND</h4><a href="card-append.html" target="_blank">card-append.html</a><a class="btn btn-outline-secondary btn-block btn-sm loadmethere" role="button" href="card-append.html" data-target="mySpecialDIV"
+                                                    data-position="append" style="margin-top: 4px;">HREF only</a><a class="btn btn-outline-secondary btn-block btn-sm loadmethere" role="button" data-href="card-append.html" data-target="mySpecialDIV" data-position="append"
+                                                    href="#">DATA-HREF only</a><a class="btn btn-secondary btn-block btn-sm loadmethere" role="button" href="index.html?myfile=card-append" data-href="card-append.html" data-target="mySpecialDIV" data-position="append">HREF &amp; DATA-HREF</a>
+                                                <hr>
+                                                <h4 style="margin: 0px;">AFTER</h4><a href="card-after.html" target="_blank">card-after.html</a><a class="btn btn-outline-light btn-block btn-sm text-dark loadmethere" role="button" href="card-after.html" data-target="mySpecialDIV"
+                                                    data-position="after" style="margin-top: 4px;">HREF only</a><a class="btn btn-outline-light btn-block btn-sm text-dark loadmethere" role="button" data-href="card-after.html" data-target="mySpecialDIV" data-position="after"
+                                                    href="#">DATA-HREF only</a><a class="btn btn-light btn-block btn-sm loadmethere" role="button" href="index.html?myfile=card-after" data-href="card-after.html" data-target="mySpecialDIV" data-position="after">HREF &amp; DATA-HREF</a>
+                                                <hr>
+                                                <h4 style="margin: 0px;">AS</h4><a href="card-as.html" target="_blank">card-as.html</a><a class="btn btn-outline-danger btn-block btn-sm loadmethere" role="button" href="card-as.html" data-target="mySpecialDIV" data-position="as"
+                                                    style="margin-top: 4px;">HREF only</a><a class="btn btn-outline-danger btn-block btn-sm loadmethere" role="button" data-href="card-as.html" data-target="mySpecialDIV" data-position="as" href="#">DATA-HREF only</a>
+                                                <a
+                                                    class="btn btn-danger btn-block btn-sm loadmethere" role="button" href="index.html?myfile=card-as" data-href="card-as.html" data-target="mySpecialDIV" data-position="as">HREF &amp; DATA-HREF</a>
+                                    </div>
+                                    <div class="col">
+                                        <p style="margin-bottom: 0;">The following two dashed DIV containers are using the this code:</p><code>&lt;div style="padding:20px; margin-top:32px; border:1px dashed #000; background:#f5f5f5"&gt;<br>&nbsp; &lt;div <strong>id="mySpecialDIV"</strong> style="padding:20px; border:1px dashed #333;"&gt;<br>&nbsp; &nbsp; This is the predefined content of this DIV.<br>&nbsp; &lt;/div&gt;<br>&lt;/div&gt;<br></code>
+                                        <p>The outer wrapper is only to demonstrate where the example links are loading the new content. The important part is that we have a DIV with <strong>id="mySpecialDIV"</strong>, that's our target.</p><div style="padding:20px; margin-top:32px; border:1px dashed #000; background:#f5f5f5">
+    <div id="mySpecialDIV" style="padding:20px; border:1px dashed #333;">
+        This is the predefined content of this DIV.
+    </div>
+</div>
+                                        <h4
+                                            style="margin-top: 32px;">Some more examples</h4>
+                                            <div class="row" style="margin-top: 16px;">
+                                                <div class="col"><a class="btn btn-primary btn-block btn-sm loadmethere" role="button" href="#" data-href="card-before.html" data-target="mySpecialDIV" data-position="before" data-scrollto-target="true">Scroll to Target</a>
+                                                    <p
+                                                        style="margin-top: 8px;">To see effect first load multiple examples of a prepend link. The button will load a HTML file before the target and scroll to it.</p>
+                                                </div>
+                                                <div class="col"><a class="btn btn-primary btn-block btn-sm loadmethere" role="button" href="#" data-href="card-before.html" data-target="mySpecialDIV" data-position="before" data-scrollto-target="true" data-scrollto-offset="200">#1 Scroll Offset 200</a>
+                                                    <a
+                                                        class="btn btn-primary btn-block btn-sm loadmethere" role="button" href="#" data-href="card-before.html" data-target="mySpecialDIV" data-position="before" data-scrollto-target="true" data-scrollto-offset="-200">#2 Scroll Offset -200</a>
+                                                        <p style="margin-top: 8px;">Same like "Scroll to Target" link, first with 200px offset and second with -200px. Usefull if you have a navbar where the target might be at the wrong position after scrolling to it.</p>
+                                                </div>
+                                                <div class="col"><a class="btn btn-primary btn-block btn-sm loadmethere" role="button" href="#" data-href="card-slow.php" data-target="mySpecialDIV" data-position="in" data-disable-lmt="true">Disable all LMT</a>
+                                                    <p style="margin-top: 8px;">This will only work on a web server with PHP! It will load the file "card-slow.php" with position "in", the PHP file has a sleep(3) to simulate longer loading time so you can see the "data-disable-lmt"
+                                                        effect where all loadMeThere links will be disabled while loading.<br></p>
+                                                    <p style="margin-top: 8px;">You can combine this with "data-disable-element".<br></p>
+                                                </div>
+                                                <div class="col"><a class="btn btn-primary btn-block btn-sm loadmethere" role="button" href="#" data-href="card-slow.php" data-target="mySpecialDIV" data-position="in" data-disable-element="#disable-example">Disable Element</a>
+                                                    <p
+                                                        style="margin-top: 8px;">This will only work on a web server with PHP! It will load the file "card-slow.php" with position "in", the PHP file has a sleep(3) to simulate longer loading time so you can see the "data-disable-element"
+                                                        effect where a custom element ("#id") or elements (".class") will be disabled while loading. In this case we are disableing the DIV with id="disable-example" (which is this hole row).<br></p>
+                                                        <p style="margin-top: 8px;">You can combine this with "data-disable-lmt".<br></p>
+                                                </div>
+                                            </div>
+                                    </div>
+                                </div>
+                                <div role="tablist" id="accordion-3" style="margin-top: 32px;">
+                                    <div class="card">
+                                        <div class="card-header" role="tab">
+                                            <h5 class="mb-0"><a data-toggle="collapse" aria-expanded="false" aria-controls="accordion-3 .item-1" href="#accordion-3 .item-1">Show example code for this</a></h5>
+                                        </div>
+                                        <div class="collapse item-1" role="tabpanel" data-parent="#accordion-3">
+                                            <div class="card-body"><code><strong>&lt;!-- Position: before --&gt;</strong><br>&lt;a class="loadmethere" href="card-before.html" data-target="mySpecialDIV" data-position="<strong>before</strong>"&gt;HREF only&lt;/a&gt;<br>&lt;a class="loadmethere" data-href="card-before.html" data-target="mySpecialDIV" data-position="<strong>before</strong>" href="#"&gt;DATA-HREF only&lt;/a&gt;<br>&lt;a class="loadmethere" href="index.html?myfile=card-before" data-href="card-before.html" data-target="mySpecialDIV" data-position="<strong>before</strong>"&gt;HREF &amp;amp; DATA-HREF&lt;/a&gt;<br><br><strong>&lt;!-- Position: prepend --&gt;</strong><br>&lt;a class="loadmethere" href="card-prepend.html" data-target="mySpecialDIV" data-position="<strong>prepend</strong>"&gt;HREF only&lt;/a&gt;<br>&lt;a class="loadmethere" data-href="card-prepend.html" data-target="mySpecialDIV" data-position="<strong>prepend</strong>" href="#"&gt;DATA-HREF only&lt;/a&gt;<br>&lt;a class="loadmethere" href="index.html?myfile=card-prepend" data-href="card-prepend.html" data-target="mySpecialDIV" data-position="<strong>prepend</strong>"&gt;HREF &amp;amp; DATA-HREF&lt;/a&gt;<br><br><strong>&lt;!-- Position: in --&gt;</strong><br>&lt;a class="loadmethere" href="card-in.html" data-target="mySpecialDIV" data-position="<strong>in</strong>"&gt;HREF only&lt;/a&gt;<br>&lt;a class="loadmethere" data-href="card-in.html" data-target="mySpecialDIV" data-position="<strong>in</strong>" href="#"&gt;DATA-HREF only&lt;/a&gt;<br>&lt;a class="loadmethere" href="index.html?myfile=card-in" data-href="card-in.html" data-target="mySpecialDIV" data-position="<strong>in</strong>"&gt;HREF &amp;amp; DATA-HREF&lt;/a&gt;<br><br><strong>&lt;!-- Position: append --&gt;</strong><br>&lt;a class="loadmethere" href="card-append.html" data-target="mySpecialDIV" data-position="<strong>append</strong>"&gt;HREF only&lt;/a&gt;<br>&lt;a class="loadmethere" data-href="card-append.html" data-target="mySpecialDIV" data-position="<strong>append</strong>" href="#"&gt;DATA-HREF only&lt;/a&gt;<br>&lt;a class="loadmethere" href="index.html?myfile=card-append" data-href="card-append.html" data-target="mySpecialDIV" data-position="<strong>append</strong>"&gt;HREF &amp;amp; DATA-HREF&lt;/a&gt;<br><br><strong>&lt;!-- Position: after --&gt;</strong><br>&lt;a class="loadmethere" href="card-after.html" data-target="mySpecialDIV" data-position="<strong>after</strong>"&gt;HREF only&lt;/a&gt;<br>&lt;a class="loadmethere" data-href="card-after.html" data-target="mySpecialDIV" data-position="<strong>after</strong>" href="#"&gt;DATA-HREF only&lt;/a&gt;<br>&lt;a class="loadmethere" href="index.html?myfile=card-after" data-href="card-after.html" data-target="mySpecialDIV" data-position="<strong>after</strong>"&gt;HREF &amp;amp; DATA-HREF&lt;/a&gt;<br><br><strong>&lt;!-- Position: as --&gt;</strong><br>&lt;a class="loadmethere" href="card-as.html" data-target="mySpecialDIV" data-position="<strong>as</strong>"&gt;HREF only&lt;/a&gt;<br>&lt;a class="loadmethere" data-href="card-as.html" data-target="mySpecialDIV" data-position="<strong>as</strong>" href="#"&gt;DATA-HREF only&lt;/a&gt;<br>&lt;a class="loadmethere" href="index.html?myfile=card-as" data-href="card-as.html" data-target="mySpecialDIV" data-position="<strong>as</strong>"&gt;HREF &amp;amp; DATA-HREF&lt;/a&gt;<br><br><strong>&lt;!-- Some more examples --&gt;</strong><br><br><strong>&lt;!-- Scroll to Target --&gt;</strong><br>&lt;a class="loadmethere" href="#" data-href="card-before.html" data-target="mySpecialDIV" data-position="before" <strong>data-scrollto-target="true"</strong>&gt;Scroll to Target&lt;/a&gt;<br><br><strong>&lt;!-- Scroll with Offset --&gt;</strong><br>&lt;a class="loadmethere" href="#" data-href="card-before.html" data-target="mySpecialDIV" data-position="before" <strong>data-scrollto-target="true" data-scrollto-offset="200"</strong>&gt;#1 Scroll Offset 200&lt;/a&gt;<br>&lt;a class="loadmethere" href="#" data-href="card-before.html" data-target="mySpecialDIV" data-position="before" <strong>data-scrollto-target="true" data-scrollto-offset="-200"</strong>&gt;#2 Scroll Offset -200&lt;/a&gt;<br><br><strong>&lt;!-- Disable all loadMeThere links while loading --&gt;</strong><br>&lt;a class="loadmethere" href="#" data-href="card-slow.php" data-target="mySpecialDIV" data-position="in" <strong>data-disable-lmt="true"</strong>&gt;Disable all LMT&lt;/a&gt;<br><br><strong>&lt;!-- Disable Element while loading --&gt;</strong><br>&lt;a class="loadmethere" href="#" data-href="card-slow.php" data-target="mySpecialDIV" data-position="in" <strong>data-disable-element="#disable-example"</strong>&gt;Disable Element by ID&lt;/a&gt;<br>&lt;a class="loadmethere" href="#" data-href="card-slow.php" data-target="mySpecialDIV" data-position="in" <strong>data-disable-element=".disable-example"</strong>&gt;Disable Elements by Class&lt;/a&gt;<br></code></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="card bg-warning" style="margin-bottom: 32px;">
+            <div class="card-header">
+                <h5 class="mb-0">Note!<br></h5>
+            </div>
+            <div class="card-body">
+                <ul style="margin: 0px;">
+                    <li>In some cases you need to re-init the newly loaded stuff (especially for jQuery listeners or functions).<br></li>
+                    <li>I also noticed (sometimes) that if your answer contains a &lt;script&gt;...&lt;/script&gt; part, it will print it in the browser instead of executing it. Workaround: just put the script part into a DIV (wrap it).<br></li>
+                </ul>
+            </div>
+        </div>
+        <div class="card text-light bg-info" style="margin-bottom: 32px;">
+            <div class="card-header">
+                <h5 class="mb-0">Additional Functions<br></h5>
+            </div>
+            <div class="card-body">
+                <p>This script comes with two more functions and the according listeners for them. Actually they are not in the examples but here is a short how to for now:</p>
+                <ul style="margin: 0px;">
+                    <li><strong>emptyTarget(targetContainer, animationTime)</strong><br>This function will empty the content of a target element (ID). The element itself will remain, only it's content gets removed.<br>Example:<br><code class="text-dark">&lt;a href="#" class="<strong>emptytarget</strong>" <strong>data-target="mySpecialDIV" data-animation-time="350"</strong>&gt;Empty the Target&lt;/a&gt;<br></code><br></li>
+                    <li><strong>deleteTarget(targetContainer, animationTime)</strong><br>This function will remove the target element (ID) completely.<br>Example:<br><code class="text-dark">&lt;a href="#" class="<strong>deletetarget</strong>" <strong>data-target="mySpecialDIV" data-animation-time="350"</strong>&gt;Empty the Target&lt;/a&gt;<br></code></li>
+                </ul>
+            </div>
+        </div>
+        <div class="card" style="margin-bottom: 32px;">
+            <div class="card-header">
+                <h5 class="mb-0">Roadmap<br></h5>
+            </div>
+            <div class="card-body">
+                <p class="card-text">As soon as I have time I want to ad some more functions. Here is a short list of them:<br></p>
+                <ul>
+                    <li><strong>Load ID from URL</strong><br>Actually loadMeThere will load the full answer to the target location. It would be nice if we can set a elements ID which shloud be loaded within the answer.</li>
+                    <li><strong>Loading animation in button/link</strong><br>The clicked button/link should be a little bit animated (like a loading spinner) while URL is loading.</li>
+                    <li><strong>Full Screen Loading</strong><br>Possibility to display a full screen loading overlay.</li>
+                </ul>
+                <p class="card-text">Let me know if you have any other ideas!<br></p>
+            </div>
+        </div>
+        <div class="card" style="margin-bottom: 32px;">
+            <div class="card-header">
+                <h5 class="mb-0">About<br></h5>
+            </div>
+            <div class="card-body">
+                <p class="card-text">This is my first package I've puplished. So if you have any ideas what should be better, just contact me!<br>I am more the PHP guy (Yes! PHP!) and my knowledge in JS was just enough to write this script here. Maybe there are some JS pros
+                    out there which might help me to improve this script?</p>
+                <p class="card-text">I am personaly using this script for a long time. Was searching for a simple way to use Ajax links and couldn't find something. So I made my own one which gets bigger and better in time. The code is a bit rewriten to make it a bit easier
+                    to understand whats happening inside. I know I could do some stuff shorter or eaven use shorter names for variables - which will decrease the filesize ;) - all this might be come in future relaeses.<br></p>
+            </div>
+        </div>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/js/bootstrap.bundle.min.js"></script>
+    <script src="assets/js/script.min.js"></script>
+</body>
+
+</html>
