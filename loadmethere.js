@@ -302,7 +302,7 @@ $(function() {
             position = "in";
         }
         if(scrollToTarget == undefined) {
-            scrollToTarget = false
+            scrollToTarget = false;
         } else {
             if(scrollToTarget == 'true') {
                 // convert from string to bool
@@ -312,7 +312,7 @@ $(function() {
             }
         }
         if(disableAnyLMT == undefined) {
-            disableAnyLMT = false;
+            disableAnyLMT = true;
         } else {
             if(disableAnyLMT == 'true') {
                 // convert from string to bool
