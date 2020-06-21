@@ -120,9 +120,13 @@ function loadMeThere(requestURL, targetContainer, position, scrollToTarget, disa
      */
     var jqxhr = jQuery.get(loadURL, function() {
         if($("#"+targetContainer).length ) {
+            var reponse = jQuery(jqxhr.responseText);
+            var reponseScript = reponse.filter("script");
+            jQuery.each(reponseScript, function(val) { eval(val.text); } );
+
             if(position == "in") {
                 $("#"+targetContainer).slideUp(animationTime, function() {
-                    $("#"+targetContainer).html(jqxhr.responseText).slideDown(animationTime, function() {
+                    $("#"+targetContainer).html(reponse).slideDown(animationTime, function() {
                         if(scrollToTarget == true) {
                             $("html, body").animate({scrollTop:$("#"+targetContainer).offset().top-scrollToTargetOffset}, "fast");
                         }
@@ -136,7 +140,7 @@ function loadMeThere(requestURL, targetContainer, position, scrollToTarget, disa
 
                 $("#"+targetContainer).parent().addClass("toDo-HideMe");
                 $(".toDo-HideMe").slideUp(animationTime, function() {
-                    $("#"+targetContainer).replaceWith(jqxhr.responseText);
+                    $("#"+targetContainer).replaceWith(reponse);
                 });
                 $(".toDo-HideMe").slideDown(animationTime, function() {
                     $("body").removeClass("toDo-HideMe");
@@ -146,11 +150,11 @@ function loadMeThere(requestURL, targetContainer, position, scrollToTarget, disa
                 if(scrollToTarget == true) {
                     $("html, body").animate({scrollTop:$("#"+targetContainer).offset().top-scrollToTargetOffset}, "fast");
                 }
-                $(jqxhr.responseText).hide().insertBefore("#"+targetContainer).slideDown(animationTime, function() {
+                $(reponse).hide().insertBefore("#"+targetContainer).slideDown(animationTime, function() {
                 });
 
             } else if(position == "prepend") {
-                $(jqxhr.responseText).hide().prependTo("#"+targetContainer).slideDown(animationTime, function() {
+                $(reponse).hide().prependTo("#"+targetContainer).slideDown(animationTime, function() {
                     if(scrollToTarget == true) {
                         $("html, body").animate({scrollTop:$("#"+targetContainer).offset().top-scrollToTargetOffset}, "fast");
                     }
@@ -158,14 +162,14 @@ function loadMeThere(requestURL, targetContainer, position, scrollToTarget, disa
 
             } else if(position == "append") {
                 var height = $("#"+targetContainer).get(0).scrollHeight;
-                $(jqxhr.responseText).hide().appendTo("#"+targetContainer).slideDown(animationTime, function() {
+                $(reponse).hide().appendTo("#"+targetContainer).slideDown(animationTime, function() {
                     if(scrollToTarget == true) {
                         $("html, body").animate({scrollTop:$("#"+targetContainer).offset().top+height-scrollToTargetOffset}, "fast");
                     }
                 });
 
             } else if(position == "after") {
-                $(jqxhr.responseText).hide().insertAfter("#"+targetContainer).slideDown(animationTime, function() {
+                $(reponse).hide().insertAfter("#"+targetContainer).slideDown(animationTime, function() {
                     var height = $("#"+targetContainer).get(0).scrollHeight;
                     if(scrollToTarget == true) {
                         $("html, body").animate({scrollTop:$("#"+targetContainer).offset().top+height-scrollToTargetOffset}, "fast");
@@ -173,7 +177,7 @@ function loadMeThere(requestURL, targetContainer, position, scrollToTarget, disa
                 });
 
             } else if(position == "modal") {
-                $("#"+targetContainer).html(jqxhr.responseText);
+                $("#"+targetContainer).html(reponse);
             }
         } else {
             console.error("Unable to find target with ID: "+targetContainer);
