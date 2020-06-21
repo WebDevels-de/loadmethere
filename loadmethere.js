@@ -138,12 +138,19 @@ function loadMeThere(requestURL, targetContainer, position, scrollToTarget, disa
                     $("html, body").animate({scrollTop:$("#"+targetContainer).offset().top-scrollToTargetOffset}, "fast");
                 }
 
-                $("#"+targetContainer).parent().addClass("toDo-HideMe");
+                $("#"+targetContainer).wrap('<div class="toDo-HideMe"></div>');
                 $(".toDo-HideMe").slideUp(animationTime, function() {
                     $("#"+targetContainer).replaceWith(reponse);
                 });
                 $(".toDo-HideMe").slideDown(animationTime, function() {
-                    $("body").removeClass("toDo-HideMe");
+                    var b = document.getElementsByClassName("toDo-HideMe");
+                    while(b.length) {
+                        var parent = b[ 0 ].parentNode;
+                        while( b[ 0 ].firstChild ) {
+                            parent.insertBefore(  b[ 0 ].firstChild, b[ 0 ] );
+                        }
+                        parent.removeChild( b[ 0 ] );
+                    }
                 });
 
             } else if(position == "before") {

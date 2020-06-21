@@ -1,0 +1,28 @@
+{
+    "author": {
+    "name": "Fatih Gürsu"
+  },
+  "bugs": {
+    "url": "https://github.com/WebDevels-de/loadmethere/issues"
+  },
+  "bundleDependencies": false,
+  "deprecated": false,
+  "description": "Ajax load function which will help you to load any URL in any target container (HTML) on click on a speific element.",
+    "homepage": "https://github.com/WebDevels-de/loadmethere#readme",
+  "keywords": [
+    "JS",
+    "JQUERY",
+    "AJAX"
+  ],
+  "license": "ISC",
+  "main": "loadmethere.js",
+  "name": "loadmethere",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/WebDevels-de/loadmethere.git"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "version": "1.0.3"
+}
